@@ -12,7 +12,7 @@ function App() {
         <div>
             <Switch>
                 <Route exact path="/" component={Products} />
-                <Route path="/generate_gift_cards" component={Form} />
+                <Route exact path="/generate_gift_cards" component={Form} />
             </Switch>
         </div>
       </Router>

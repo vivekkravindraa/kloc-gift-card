@@ -28,7 +28,7 @@ export default class Form extends Component {
     componentDidMount = () => {
         let userData = this.props.location.search;
         let data = queryString.parse(userData);
-        console.log(data);
+        // console.log(data);
         this.setState({
             shop: data.shop,
             customerId: data.customerId
@@ -37,11 +37,15 @@ export default class Form extends Component {
         localStorage.setItem('customerId', data.customerId);
     }
 
-    handleNumOfGiftCards = (e) => { this.setState({ giftCardsQty: e.target.value }) }
-    handleDateOfExpiry = (e) => { this.setState({ expiryDate: e.target.value }) }
-    handleEmail = (e) => { this.setState({ email: e.target.value }) }
-    handleAmount = (e) => { this.setState({ amount: e.target.value }) }
-    handlePrefix = (e) => { this.setState({ prefix: e.target.value }) }
+    // handleNumOfGiftCards = (e) => { this.setState({ giftCardsQty: e.target.value }) }
+    // handleDateOfExpiry = (e) => { this.setState({ expiryDate: e.target.value }) }
+    // handleEmail = (e) => { this.setState({ email: e.target.value }) }
+    // handleAmount = (e) => { this.setState({ amount: e.target.value }) }
+    // handlePrefix = (e) => { this.setState({ prefix: e.target.value }) }
+
+    handleOnChange = (e) => {
+        this.setState({ [e.target.name]: e.target.value })
+    }
 
     show = () => {
         const {
@@ -94,11 +98,11 @@ export default class Form extends Component {
             isSubmitted: true,
             loaded: true
         });
-        console.log(giftCardData);
+        // console.log(giftCardData);
 
         axios.post(`https://402b76da.ngrok.io/products/app/create-product`, giftCardData)
             .then((response) => {
-                console.log(response.data, "axios data")
+                // console.log(response.data, "axios data")
                 this.setState({
                     visible: false,
                     loaded: false
@@ -107,7 +111,8 @@ export default class Form extends Component {
                 window.location.href = `https://klocapp.myshopify.com/cart/${variantId}:1`;
             })
             .catch((err) => {
-                console.log(err.response.status, err.response.data)
+                // console.log(err);
+                // console.log(err.response.status, err.response.data)
                 this.setState({
                     visible: false,
                     loaded: false,
@@ -145,9 +150,10 @@ export default class Form extends Component {
                         <input
                             className={'form-group' + (isSubmitted && !giftCardsQty ? ' has-error' : '')}
                             type="number"
+                            name="giftCardsQty"
                             min="0"
                             value={giftCardsQty}
-                            onChange={this.handleNumOfGiftCards}
+                            onChange={this.handleOnChange}
                         />
                         {isSubmitted && !giftCardsQty &&
                             <div className="help-block" style={{ color: "red" }}>Number of gift cards is required</div>
@@ -158,8 +164,9 @@ export default class Form extends Component {
                         <input
                             className={'form-group' + (isSubmitted && !expiryDate ? ' has-error' : '')}
                             type="datetime-local"
+                            name="expiryDate"
                             value={expiryDate}
-                            onChange={this.handleDateOfExpiry}
+                            onChange={this.handleOnChange}
                         />
                     </div>
                     <div className="form-group">
@@ -167,10 +174,10 @@ export default class Form extends Component {
                         <input
                             className={'form-group' + (isSubmitted && !email ? ' has-error' : '')}
                             type="email"
-                            pattern="[^ @]*@[^ @]*"
+                            name="email"
                             value={email}
-                            onChange={this.handleEmail}
-                            required
+                            pattern="[^ @]*@[^ @]*"
+                            onChange={this.handleOnChange}
                         />
                         {isSubmitted && !email &&
                             <div className="help-block" style={{ color: "red" }}>Email is required</div>
@@ -181,9 +188,10 @@ export default class Form extends Component {
                         <input
                             className={'form-group' + (isSubmitted && !amount ? ' has-error' : '')}
                             type="number"
-                            min="0"
+                            name="amount"
                             value={amount}
-                            onChange={this.handleAmount}
+                            min="0"
+                            onChange={this.handleOnChange}
                         />
                         {isSubmitted && !amount &&
                             <div className="help-block" style={{ color: "red" }}>Amount is required</div>
@@ -194,8 +202,9 @@ export default class Form extends Component {
                         <input
                             className="form-group"
                             type="text"
+                            name="prefix"
                             value={prefix}
-                            onChange={this.handlePrefix}
+                            onChange={this.handleOnChange}
                         />
                     </div>
                     <button className="btn btn-secondary" onClick={this.show}>Generate</button>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 // import axios from 'axios';
 // import queryString from 'query-string';
 
@@ -29,7 +30,8 @@ export default class Products extends Component {
 
         return (
             <div>
-                Welcome to {shop}!
+                Welcome to Shop {shop}
+                <Link to="/generate_gift_cards">Generate Gift Cards</Link>
             </div>
         )
     }
