@@ -37,12 +37,6 @@ export default class Form extends Component {
         localStorage.setItem('customerId', data.customerId);
     }
 
-    // handleNumOfGiftCards = (e) => { this.setState({ giftCardsQty: e.target.value }) }
-    // handleDateOfExpiry = (e) => { this.setState({ expiryDate: e.target.value }) }
-    // handleEmail = (e) => { this.setState({ email: e.target.value }) }
-    // handleAmount = (e) => { this.setState({ amount: e.target.value }) }
-    // handlePrefix = (e) => { this.setState({ prefix: e.target.value }) }
-
     handleOnChange = (e) => {
         this.setState({ [e.target.name]: e.target.value })
     }
