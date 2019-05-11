@@ -203,8 +203,8 @@ export default class Form extends Component {
                     </div>
                     <button className="btn btn-secondary" onClick={this.show}>Generate</button>
                     <Rodal visible={this.state.visible} onClose={this.hide}>
-                        <p>You have selected {this.state.giftCardsQty ? this.state.giftCardsQty : '0'} gift cards of {this.state.amount ? this.state.amount : '0'} rupees.</p>
-                        <p>You have to pay an overall of {this.state.giftCardsQty * this.state.amount} rupees.</p>
+                        <p>You have selected <b>{this.state.giftCardsQty ? this.state.giftCardsQty : '0'}</b> gift cards of <b>{this.state.amount ? this.state.amount : '0'}</b> rupees.</p>
+                        <p>You have to pay an overall of <b>{this.state.giftCardsQty * this.state.amount}</b> rupees.</p>
                         <button className="btn btn-secondary" onClick={this.handleConfirm}>Confirm</button>
                         <pre>  OR  </pre>
                         <button className="btn btn-secondary" onClick={this.hide}>Cancel</button>
