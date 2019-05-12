@@ -204,6 +204,9 @@ export default class Form extends Component {
                     {isSubmitted && !email &&
                         <div className="help-block" style={{ color: "red" }}>Email is required</div>
                     }
+                    {isSubmitted && errors['email'] === 'Email is invalid' &&
+                        <div className="help-block" style={{ color: "red" }}>Email is invalid</div>
+                    }
                 </div>
                 <div>
                     <label htmlFor="amount">Select the amount for each gift card</label>
