@@ -162,8 +162,8 @@ export default class Form extends Component {
                     </h6>
                     : null}
                 <h1>Generate Gift Cards</h1>
-                <div className="form-group">
-                    <label>Enter the number of gift cards</label>
+                <div>
+                    <label htmlFor="giftCardsQty">Enter the number of gift cards</label>
                     <input
                         className={classnames("", {
                             invalid: errors.giftCardsQty
@@ -179,8 +179,8 @@ export default class Form extends Component {
                         <div className="help-block" style={{ color: "red" }}>Number of gift cards is required</div>
                     }
                 </div>
-                <div className="form-group col-md-6">
-                    <label>Enter the date and time of expiry for the gift cards</label>
+                <div>
+                    <label htmlFor="expiryDate">Enter the date and time of expiry for the gift cards</label>
                     <input
                         type="datetime-local"
                         name="expiryDate"
@@ -188,8 +188,8 @@ export default class Form extends Component {
                         onChange={this.handleOnChange}
                     />
                 </div>
-                <div className="form-group">
-                    <label>Enter the email id of the person to whom you want to send the gift cards</label>
+                <div>
+                    <label htmlFor="email">Enter the email id of the person to whom you want to send the gift cards</label>
                     <input
                         className={classnames("", {
                             invalid: errors.email || errors.emailnotfound
@@ -205,8 +205,8 @@ export default class Form extends Component {
                         <div className="help-block" style={{ color: "red" }}>Email is required</div>
                     }
                 </div>
-                <div className="form-group">
-                    <label>Select the amount for each gift card</label>
+                <div>
+                    <label htmlFor="amount">Select the amount for each gift card</label>
                     <input
                         className={classnames("", {
                             invalid: errors.amount
@@ -222,8 +222,8 @@ export default class Form extends Component {
                         <div className="help-block" style={{ color: "red" }}>Amount is required</div>
                     }
                 </div>
-                <div className="form-group">
-                    <label>Select the prefix with which you want to generate random codes for the gift cards</label>
+                <div>
+                    <label htmlFor="prefix">Select the prefix with which you want to generate random codes for the gift cards</label>
                     <input
                         type="text"
                         name="prefix"

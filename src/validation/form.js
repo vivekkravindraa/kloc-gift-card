@@ -1,7 +1,7 @@
 import Validator from 'validator';
 import isEmpty from 'is-empty';
 
-module.exports = function validateInput(data) {
+export default function validateInput(data) {
     let errors = {};
     
     // Convert empty fields to an empty string so we can use validator functions
