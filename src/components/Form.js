@@ -182,7 +182,7 @@ export default class Form extends Component {
                 </div>
                 <div>
                     <label htmlFor="expiryDate" style={{ color: "black" }}>
-                        Enter the date and time of expiry for the gift cards
+                        Enter the date of expiry for the gift cards
                     </label>
                     <input
                         type="date"
