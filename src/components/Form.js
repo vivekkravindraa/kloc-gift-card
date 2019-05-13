@@ -209,6 +209,7 @@ export default class Form extends Component {
                         value={giftCardsQty}
                         error={errors.giftCardsQty}
                         min="1"
+                        max="100"
                         onChange={this.handleOnChange}
                     />
                     <span className="red-text">
@@ -261,7 +262,8 @@ export default class Form extends Component {
                         name="amount"
                         value={amount}
                         error={errors.amount}
-                        min="100"
+                        min="1"
+                        max="10000"
                         onChange={this.handleOnChange}
                     />
                      <span className="red-text">
