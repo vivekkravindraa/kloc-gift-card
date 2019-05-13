@@ -68,7 +68,7 @@ export default class Form extends Component {
                 visible: false
             })
         } else {
-            this.setState({ visible: true })
+            this.setState({ errors: {}, visible: true })
         }
     }
 
