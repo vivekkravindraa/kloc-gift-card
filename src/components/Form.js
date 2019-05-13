@@ -44,6 +44,10 @@ export default class Form extends Component {
         this.setState({ [e.target.name]: e.target.value })
     }
 
+    handleDate = (e) => {
+        this.setState({ expiryDate: e.target.value })
+    }
+
     show = () => {
         const {
             giftCardsQty,
@@ -142,6 +146,11 @@ export default class Form extends Component {
             error,
         } = this.state;
 
+        let today = new Date();
+        let month = today.getMonth() + 1;
+        let resultMonth = String(month).length > 1 ? String(month) : '0' + String(month);
+        let dateNow =  today.getFullYear() + '-' + resultMonth + '-' + today.getDate();
+
         return (
             <div className="container">
                 {error.data ?
@@ -172,11 +181,12 @@ export default class Form extends Component {
                 <div>
                     <label htmlFor="expiryDate" style={{ color: "black" }}>Enter the date and time of expiry for the gift cards</label>
                     <input
-                        type="datetime-local"
+                        type="date"
                         name="expiryDate"
                         value={expiryDate}
-                        min="2019-01-01T00:00"
-                        onChange={this.handleOnChange}
+                        min={dateNow}
+                        max="2050-01-01"
+                        onChange={this.handleDate}
                     />
                 </div>
                 <div>
