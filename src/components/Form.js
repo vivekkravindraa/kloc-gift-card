@@ -65,7 +65,7 @@ export default class Form extends Component {
 
         let { errors, isValid } = validateInput(data)
 
-        if (!isValid || giftCardsQty < 1 || amount < 100) {
+        if (!isValid) {
             this.setState({
                 errors,
                 visible: false

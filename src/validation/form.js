@@ -12,6 +12,8 @@ export default function validateInput(data) {
     // Gift Card Quantity checks
     if(Validator.isEmpty(data.giftCardsQty)) {
         errors.giftCardsQty = "Gift card quantity is required";
+    } else if (data.giftCardsQty < 1) {
+        errors.giftCardsQty = "You should enter atleast 1 gift card";
     }
 
     // Email checks
@@ -23,7 +25,9 @@ export default function validateInput(data) {
 
     // Password checks
     if (Validator.isEmpty(data.amount)) {
-        errors.amount = "Password field is required";
+        errors.amount = "Amount field is required";
+    } else if (data.amount < 100) {
+        errors.amount = "You should enter a minimum of 100 rupees";
     }
 
     return {
