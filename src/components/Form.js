@@ -17,7 +17,6 @@ export default class Form extends Component {
             email: '',
             amount: '',
             prefix: '',
-            isSubmitted: false,
             visible: false,
             loaded: false,
             errors: {},
@@ -60,8 +59,6 @@ export default class Form extends Component {
             email,
             amount
         }
-
-        this.setState({ isSubmitted: true });
 
         let { errors, isValid } = validateInput(data)
 
