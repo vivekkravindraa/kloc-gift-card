@@ -13,21 +13,21 @@ export default function validateInput(data) {
     if(Validator.isEmpty(data.giftCardsQty)) {
         errors.giftCardsQty = "Gift card quantity is required";
     } else if (data.giftCardsQty < 1) {
-        errors.giftCardsQty = "You should enter atleast 1 gift card";
+        errors.giftCardsQtyIsInvalid = "You should enter at least 1 gift card";
     }
 
     // Email checks
     if (Validator.isEmpty(data.email)) {
-        errors.email = "Email field is required";
+        errors.email = "Email is required";
     } else if (!Validator.isEmail(data.email)) {
-        errors.email = "Email is invalid";
+        errors.emailIsInvalid = "Email is invalid";
     }
 
-    // Password checks
+    // Amount checks
     if (Validator.isEmpty(data.amount)) {
-        errors.amount = "Amount field is required";
+        errors.amount = "Amount is required";
     } else if (data.amount < 100) {
-        errors.amount = "You should enter a minimum of 100 rupees";
+        errors.amountIsInvalid = "You should enter a minimum of 100 rupees";
     }
 
     return { errors, isValid: isEmpty(errors) };

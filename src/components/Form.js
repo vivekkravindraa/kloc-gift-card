@@ -137,7 +137,6 @@ export default class Form extends Component {
             email,
             amount,
             prefix,
-            isSubmitted,
             loaded,
             errors,
             error,
@@ -162,7 +161,7 @@ export default class Form extends Component {
                     </label>
                     <input
                         className={classnames("", {
-                            invalid: errors.giftCardsQty
+                            invalid: errors.giftCardsQty || errors.giftCardsQtyIsInvalid
                         })}
                         type="number"
                         name="giftCardsQty"
@@ -171,11 +170,10 @@ export default class Form extends Component {
                         min="1"
                         onChange={this.handleOnChange}
                     />
-                    {isSubmitted && (!giftCardsQty || giftCardsQty < 1) &&
-                        <div className="help-block" style={{ color: "red" }}>
-                            Gift card is required. You should enter atleast 1 gift card.
-                        </div>
-                    }
+                    <span className="red-text">
+                        {errors.giftCardsQty}
+                        {errors.giftCardsQtyIsInvalid}
+                    </span>
                 </div>
                 <div>
                     <label htmlFor="expiryDate" style={{ color: "black" }}>
@@ -196,7 +194,7 @@ export default class Form extends Component {
                     </label>
                     <input
                         className={classnames("", {
-                            invalid: errors.email
+                            invalid: errors.email || errors.emailIsInvalid
                         })}
                         type="email"
                         name="email"
@@ -205,12 +203,10 @@ export default class Form extends Component {
                         pattern="[^ @]*@[^ @]*"
                         onChange={this.handleOnChange}
                     />
-                    {isSubmitted && !email &&
-                        <div className="help-block" style={{ color: "red" }}>Email is required</div>
-                    }
-                    {isSubmitted && errors['email'] === 'Email is invalid' &&
-                        <div className="help-block" style={{ color: "red" }}>Email is invalid</div>
-                    }
+                    <span className="red-text">
+                        {errors.email}
+                        {errors.emailIsInvalid}
+                    </span>
                 </div>
                 <div>
                     <label htmlFor="amount" style={{ color: "black" }}>
@@ -218,7 +214,7 @@ export default class Form extends Component {
                     </label>
                     <input
                         className={classnames("", {
-                            invalid: errors.amount
+                            invalid: errors.amount || errors.amountIsInvalid
                         })}
                         type="number"
                         name="amount"
@@ -227,11 +223,10 @@ export default class Form extends Component {
                         min="100"
                         onChange={this.handleOnChange}
                     />
-                    {isSubmitted && (!amount || amount < 100) &&
-                        <div className="help-block" style={{ color: "red" }}>
-                            Amount is required. You should enter a minimum of 100 rupees.
-                        </div>
-                    }
+                     <span className="red-text">
+                        {errors.amount}
+                        {errors.amountIsInvalid}
+                    </span>
                 </div>
                 <div>
                     <label htmlFor="prefix" style={{ color: "black" }}>
