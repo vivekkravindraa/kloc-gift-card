@@ -102,10 +102,7 @@ export default class Form extends Component {
             body_html: `${shop} ${customerId} ${giftCardsQty} ${expiryDate} ${email} ${amount} ${prefix}`
         }
 
-        this.setState({
-            isSubmitted: true,
-            loaded: true
-        });
+        this.setState({ loaded: true });
         // console.log(giftCardData);
 
         axios.post(`https://402b76da.ngrok.io/products/app/create-product`, giftCardData)
@@ -199,7 +196,7 @@ export default class Form extends Component {
                     </label>
                     <input
                         className={classnames("", {
-                            invalid: errors.email || errors.emailnotfound
+                            invalid: errors.email
                         })}
                         type="email"
                         name="email"

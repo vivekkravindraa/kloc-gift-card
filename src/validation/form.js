@@ -30,8 +30,5 @@ export default function validateInput(data) {
         errors.amount = "You should enter a minimum of 100 rupees";
     }
 
-    return {
-        errors,
-        isValid: isEmpty(errors)
-    };
+    return { errors, isValid: isEmpty(errors) };
 };
