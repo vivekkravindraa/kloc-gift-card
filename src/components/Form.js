@@ -160,7 +160,9 @@ export default class Form extends Component {
                     : null}
                 <h1>Generate Gift Cards</h1>
                 <div>
-                    <label htmlFor="giftCardsQty" style={{ color: "black" }}>Enter the number of gift cards</label>
+                    <label htmlFor="giftCardsQty" style={{ color: "black" }}>
+                        Enter the number of gift cards
+                    </label>
                     <input
                         className={classnames("", {
                             invalid: errors.giftCardsQty
@@ -179,7 +181,9 @@ export default class Form extends Component {
                     }
                 </div>
                 <div>
-                    <label htmlFor="expiryDate" style={{ color: "black" }}>Enter the date and time of expiry for the gift cards</label>
+                    <label htmlFor="expiryDate" style={{ color: "black" }}>
+                        Enter the date and time of expiry for the gift cards
+                    </label>
                     <input
                         type="date"
                         name="expiryDate"
@@ -190,7 +194,9 @@ export default class Form extends Component {
                     />
                 </div>
                 <div>
-                    <label htmlFor="email" style={{ color: "black" }}>Enter the email id of the person to whom you want to send the gift cards</label>
+                    <label htmlFor="email" style={{ color: "black" }}>
+                        Enter the email id of the person to whom you want to send the gift cards
+                    </label>
                     <input
                         className={classnames("", {
                             invalid: errors.email || errors.emailnotfound
@@ -210,7 +216,9 @@ export default class Form extends Component {
                     }
                 </div>
                 <div>
-                    <label htmlFor="amount" style={{ color: "black" }}>Select the amount for each gift card</label>
+                    <label htmlFor="amount" style={{ color: "black" }}>
+                        Select the amount for each gift card
+                    </label>
                     <input
                         className={classnames("", {
                             invalid: errors.amount
@@ -229,7 +237,9 @@ export default class Form extends Component {
                     }
                 </div>
                 <div>
-                    <label htmlFor="prefix" style={{ color: "black" }}>Select the prefix with which you want to generate random codes for the gift cards</label>
+                    <label htmlFor="prefix" style={{ color: "black" }}>
+                        Select the prefix with which you want to generate random codes for the gift cards
+                    </label>
                     <input
                         type="text"
                         name="prefix"
