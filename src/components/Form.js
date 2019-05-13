@@ -212,7 +212,7 @@ export default class Form extends Component {
                         min="100"
                         onChange={this.handleOnChange}
                     />
-                    {isSubmitted && (!amount < 1 || amount < 100) &&
+                    {isSubmitted && (!amount || amount < 100) &&
                         <div className="help-block" style={{ color: "red" }}>
                             Amount is required. You should enter a minimum of 100 rupees.
                         </div>
