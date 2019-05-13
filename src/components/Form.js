@@ -186,8 +186,8 @@ export default class Form extends Component {
         return (
             <div className="container">
                 {error.data ?
-                    <h6 className="card-panel teal lighten-2">
-                        You haven't installed the app! Please install it.
+                    <h6 className="card-panel red lighten-2">
+                        NOT FOUND ERROR :: You haven't installed the app! Please install it.
                     </h6>
                     : null}
                 {error.message ?
