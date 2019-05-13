@@ -44,7 +44,27 @@ export default class Form extends Component {
     }
 
     handleDate = (e) => {
+
         this.setState({ expiryDate: e.target.value })
+
+        // let dateSelected = e.target.value;
+        // // console.log('dateSelected', dateSelected);
+
+        // let today = new Date();
+        // let month = today.getMonth() + 1;
+        // let resultMonth = String(month).length > 1 ? String(month) : '0' + String(month);
+        // let dateNow =  today.getFullYear() + '-' + resultMonth + '-' + today.getDate();
+        // // console.log('dateNow', dateNow);
+
+        // if(
+        //     (dateSelected.slice(0,4) < dateNow.slice(0,4)) ||
+        //     (dateSelected.slice(5,7) < dateNow.slice(5,7)) ||
+        //     (dateSelected.slice(8,10) < dateNow.slice(8,10))
+        // ) {
+        //     this.setState({ expiryDate: '' })
+        // } else {
+        //     this.setState({ expiryDate: e.target.value })
+        // }
     }
 
     show = () => {
@@ -68,6 +88,7 @@ export default class Form extends Component {
                 visible: false
             })
         } else {
+            console.log(this.state);
             this.setState({ errors: {}, visible: true })
         }
     }
