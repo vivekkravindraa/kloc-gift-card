@@ -61,7 +61,7 @@ export default class Form extends Component {
 
         let { errors, isValid } = validateInput(data)
 
-        if (!isValid) {
+        if (!isValid || giftCardsQty < 1 || amount < 100) {
             this.setState({
                 errors,
                 visible: false
@@ -69,16 +69,6 @@ export default class Form extends Component {
         } else {
             this.setState({ visible: true })
         }
-
-        // if (
-        //     giftCardsQty === '' ||
-        //     email === '' ||
-        //     amount === ''
-        // ) {
-        //     this.setState({ visible: false })
-        // } else {
-        //     this.setState({ visible: true })
-        // }
     }
 
     hide = () => { this.setState({ visible: false }) }
@@ -114,31 +104,29 @@ export default class Form extends Component {
         });
         // console.log(giftCardData);
 
-        if (giftCardsQty >= 1 && amount >= 100) {
-            axios.post(`https://402b76da.ngrok.io/products/app/create-product`, giftCardData)
-                .then((response) => {
-                    // console.log(response.data, "axios data")
-                    this.setState({
-                        visible: false,
-                        loaded: false
-                    })
-                    const variantId = response.data.variants[0].id;
-                    window.location.href = `https://klocapp.myshopify.com/cart/${variantId}:1`;
+        axios.post(`https://402b76da.ngrok.io/products/app/create-product`, giftCardData)
+            .then((response) => {
+                // console.log(response.data, "axios data")
+                this.setState({
+                    visible: false,
+                    loaded: false
                 })
-                .catch((err) => {
-                    // console.log(err);
-                    // console.log(err.response.status, err.response.data)
-                    this.setState({
-                        visible: false,
-                        loaded: false,
-                        error: {
-                            ...this.state.error,
-                            statusCode: err.response.status,
-                            data: err.response.data
-                        }
-                    })
+                const variantId = response.data.variants[0].id;
+                window.location.href = `https://klocapp.myshopify.com/cart/${variantId}:1`;
+            })
+            .catch((err) => {
+                // console.log(err);
+                // console.log(err.response.status, err.response.data)
+                this.setState({
+                    visible: false,
+                    loaded: false,
+                    error: {
+                        ...this.state.error,
+                        statusCode: err.response.status,
+                        data: err.response.data
+                    }
                 })
-        }
+            })
     }
 
     render() {
@@ -163,7 +151,7 @@ export default class Form extends Component {
                     : null}
                 <h1>Generate Gift Cards</h1>
                 <div>
-                    <label htmlFor="giftCardsQty">Enter the number of gift cards</label>
+                    <label htmlFor="giftCardsQty" style={{ color: "black" }}>Enter the number of gift cards</label>
                     <input
                         className={classnames("", {
                             invalid: errors.giftCardsQty
@@ -175,21 +163,24 @@ export default class Form extends Component {
                         min="1"
                         onChange={this.handleOnChange}
                     />
-                    {isSubmitted && !giftCardsQty &&
-                        <div className="help-block" style={{ color: "red" }}>Number of gift cards is required</div>
+                    {isSubmitted && (!giftCardsQty || giftCardsQty < 1) &&
+                        <div className="help-block" style={{ color: "red" }}>
+                            Gift card is required. You should enter atleast 1 gift card.
+                        </div>
                     }
                 </div>
                 <div>
-                    <label htmlFor="expiryDate">Enter the date and time of expiry for the gift cards</label>
+                    <label htmlFor="expiryDate" style={{ color: "black" }}>Enter the date and time of expiry for the gift cards</label>
                     <input
                         type="datetime-local"
                         name="expiryDate"
                         value={expiryDate}
+                        min="2019-01-01T00:00"
                         onChange={this.handleOnChange}
                     />
                 </div>
                 <div>
-                    <label htmlFor="email">Enter the email id of the person to whom you want to send the gift cards</label>
+                    <label htmlFor="email" style={{ color: "black" }}>Enter the email id of the person to whom you want to send the gift cards</label>
                     <input
                         className={classnames("", {
                             invalid: errors.email || errors.emailnotfound
@@ -209,7 +200,7 @@ export default class Form extends Component {
                     }
                 </div>
                 <div>
-                    <label htmlFor="amount">Select the amount for each gift card</label>
+                    <label htmlFor="amount" style={{ color: "black" }}>Select the amount for each gift card</label>
                     <input
                         className={classnames("", {
                             invalid: errors.amount
@@ -221,12 +212,14 @@ export default class Form extends Component {
                         min="100"
                         onChange={this.handleOnChange}
                     />
-                    {isSubmitted && !amount &&
-                        <div className="help-block" style={{ color: "red" }}>Amount is required</div>
+                    {isSubmitted && (!amount < 1 || amount < 100) &&
+                        <div className="help-block" style={{ color: "red" }}>
+                            Amount is required. You should enter a minimum of 100 rupees.
+                        </div>
                     }
                 </div>
                 <div>
-                    <label htmlFor="prefix">Select the prefix with which you want to generate random codes for the gift cards</label>
+                    <label htmlFor="prefix" style={{ color: "black" }}>Select the prefix with which you want to generate random codes for the gift cards</label>
                     <input
                         type="text"
                         name="prefix"
