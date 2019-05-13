@@ -22,7 +22,8 @@ export default class Form extends Component {
             errors: {},
             error: {
                 statusCode: '',
-                data: ''
+                data: '',
+                message: ''
             }
         }
     }
@@ -135,16 +136,33 @@ export default class Form extends Component {
             })
             .catch((err) => {
                 // console.log(err);
-                // console.log(err.response.status, err.response.data)
-                this.setState({
-                    visible: false,
-                    loaded: false,
-                    error: {
-                        ...this.state.error,
-                        statusCode: err.response.status,
-                        data: err.response.data
-                    }
-                })
+                // console.log(err.response);
+                // console.log(err.response.status);
+                // console.log(err.response.data);
+                // console.log(err.message);
+                if(!err.response) {
+                    this.setState({
+                        visible: false,
+                        loaded: false,
+                        error: {
+                            ...this.state.error,
+                            statusCode: '',
+                            data: '',
+                            message: `There's a network error!`
+                        }
+                    })
+                } else {
+                    this.setState({
+                        visible: false,
+                        loaded: false,
+                        error: {
+                            ...this.state.error,
+                            statusCode: err.response.status,
+                            data: err.response.data,
+                            message: ''
+                        }
+                    })
+                }
             })
     }
 
@@ -170,6 +188,11 @@ export default class Form extends Component {
                 {error.data ?
                     <h6 className="card-panel teal lighten-2">
                         You haven't installed the app! Please install it.
+                    </h6>
+                    : null}
+                {error.message ?
+                    <h6 className="card-panel red lighten-2">
+                        NETWORK ERROR :: We're unable to connect to the server right at this moment. Please, try again!
                     </h6>
                     : null}
                 <h1>Generate Gift Cards</h1>
