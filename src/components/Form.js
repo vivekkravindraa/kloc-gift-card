@@ -33,7 +33,7 @@ export default class Form extends Component {
         let userData = this.props.location.search;
         let data = queryString.parse(userData);
         // console.log(data);
-        
+
         this.setState({
             shop: data.shop,
             customerId: data.customerId
@@ -108,6 +108,7 @@ export default class Form extends Component {
     show = () => {
         const {
             giftCardsQty,
+            expiryDate,
             email,
             amount,
             prefix
@@ -115,6 +116,7 @@ export default class Form extends Component {
 
         const data = {
             giftCardsQty,
+            expiryDate,
             email,
             amount,
             prefix
@@ -205,6 +207,16 @@ export default class Form extends Component {
             })
     }
 
+    reset = () => {
+        document.getElementById('date').value = ''
+        this.setState({
+            giftCardsQty: '',
+            email: '',
+            amount: '',
+            prefix: ''
+        })
+    }
+
     render() {
         const {
             giftCardsQty,
@@ -262,13 +274,18 @@ export default class Form extends Component {
                         Enter the date of expiry for the gift cards
                     </label>
                     <input
-                        className="datepicker"
+                        className={classnames("", {
+                            invalid: errors.expiryDateIsInvalid
+                        })}
                         id="date"
                         type="text"
                         name="expiryDate"
                         defaultValue={expiryDate}
                         // onChange={this.handleDate}
                     />
+                    <span className="red-text">
+                        {errors.expiryDateIsInvalid}
+                    </span>
                 </div>
                 <div>
                     <label htmlFor="email" style={{ color: "black" }}>
@@ -331,7 +348,13 @@ export default class Form extends Component {
                         {errors.prefixIsInvalid}
                     </span>
                 </div>
-                <button className="btn btn-secondary" onClick={this.show}>Generate</button>
+                <button className="btn" onClick={this.show}>
+                    Generate<i className="material-icons right">send</i>
+                </button>
+                <p>OR</p>
+                <button className="btn" onClick={this.reset}>
+                    Reset<i className="material-icons right">loop</i>
+                </button>
                 <Rodal visible={this.state.visible} onClose={this.hide}>
                     <p>You have selected <b>{this.state.giftCardsQty ? this.state.giftCardsQty : '0'}</b> gift cards of <b>{this.state.amount ? this.state.amount : '0'}</b> rupees.</p>
                     <p>You have to pay an overall of <b>{this.state.giftCardsQty * this.state.amount}</b> rupees.</p>

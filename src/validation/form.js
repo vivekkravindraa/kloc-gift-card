@@ -16,6 +16,11 @@ export default function validateInput(data) {
         errors.giftCardsQtyIsInvalid = "You should enter a minimum of 1 and a maximum of 100 gift cards";
     }
 
+    // Date checks
+    if(Number(data.expiryDate.slice(6)) > (new Date().getFullYear() + 1)) {
+        errors.expiryDateIsInvalid = `You shouldn't enter a date that's greater than a year from ${new Date().getFullYear()} `
+    }
+
     // Email checks
     if (Validator.isEmpty(data.email)) {
         errors.email = "Email is required";
