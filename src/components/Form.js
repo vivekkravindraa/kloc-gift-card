@@ -124,7 +124,7 @@ export default class Form extends Component {
         this.setState({ loaded: true });
         // console.log(giftCardData);
 
-        axios.post(`https://402b76da.ngrok.io/products/app/create-product`, giftCardData)
+        axios.post(`https://0c4dd1cd.ngrok.io/products/app/create-product`, giftCardData)
             .then((response) => {
                 // console.log(response.data)
                 this.setState({
