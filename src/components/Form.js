@@ -33,6 +33,7 @@ export default class Form extends Component {
         let userData = this.props.location.search;
         let data = queryString.parse(userData);
         // console.log(data);
+        
         this.setState({
             shop: data.shop,
             customerId: data.customerId
@@ -164,7 +165,7 @@ export default class Form extends Component {
 
         axios.post(`https://402b76da.ngrok.io/products/app/create-product`, giftCardData)
             .then((response) => {
-                // console.log(response.data, "axios data")
+                // console.log(response.data)
                 this.setState({
                     visible: false,
                     loaded: false
