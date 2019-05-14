@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import classnames from 'classnames';
 import Loader from 'react-loader';
+import M from 'materialize-css';
 import queryString from 'query-string';
 import Rodal from 'rodal';
 import validateInput from '../validation/form';
@@ -38,35 +39,52 @@ export default class Form extends Component {
         })
         localStorage.setItem('shopDomain', data.shop);
         localStorage.setItem('customerId', data.customerId);
+
+        let datePicker = document.getElementById('date');
+        M.Datepicker.init(datePicker, {
+            format: "dd-mm-yyyy",
+            minDate: new Date(),
+            showClearBtn: true
+        });
+
+        datePicker.addEventListener('change', dateNow, false);
+
+        let alternate = this;
+
+        function dateNow() {
+            let dateValue = document.getElementById("date").value;
+            // console.log(dateValue);
+            alternate.setState({ expiryDate: dateValue })
+        }
     }
 
     handleOnChange = (e) => {
         this.setState({ [e.target.name]: e.target.value })
     }
 
-    handleDate = (e) => {
+    // handleDate = (e) => {
+    //     console.log(e.target.value);
+    //     this.setState({ expiryDate: e.target.value })
 
-        this.setState({ expiryDate: e.target.value })
+    //     let dateSelected = e.target.value;
+    //     // console.log('dateSelected', dateSelected);
 
-        // let dateSelected = e.target.value;
-        // // console.log('dateSelected', dateSelected);
+    //     let today = new Date();
+    //     let month = today.getMonth() + 1;
+    //     let resultMonth = String(month).length > 1 ? String(month) : '0' + String(month);
+    //     let dateNow =  today.getFullYear() + '-' + resultMonth + '-' + today.getDate();
+    //     // console.log('dateNow', dateNow);
 
-        // let today = new Date();
-        // let month = today.getMonth() + 1;
-        // let resultMonth = String(month).length > 1 ? String(month) : '0' + String(month);
-        // let dateNow =  today.getFullYear() + '-' + resultMonth + '-' + today.getDate();
-        // // console.log('dateNow', dateNow);
-
-        // if(
-        //     (dateSelected.slice(0,4) < dateNow.slice(0,4)) ||
-        //     (dateSelected.slice(5,7) < dateNow.slice(5,7)) ||
-        //     (dateSelected.slice(8,10) < dateNow.slice(8,10))
-        // ) {
-        //     this.setState({ expiryDate: '' })
-        // } else {
-        //     this.setState({ expiryDate: e.target.value })
-        // }
-    }
+    //     if(
+    //         (dateSelected.slice(0,4) < dateNow.slice(0,4)) ||
+    //         (dateSelected.slice(5,7) < dateNow.slice(5,7)) ||
+    //         (dateSelected.slice(8,10) < dateNow.slice(8,10))
+    //     ) {
+    //         this.setState({ expiryDate: '' })
+    //     } else {
+    //         this.setState({ expiryDate: e.target.value })
+    //     }
+    // }
 
     show = () => {
         const {
@@ -178,10 +196,11 @@ export default class Form extends Component {
             error,
         } = this.state;
 
-        let today = new Date();
-        let month = today.getMonth() + 1;
-        let resultMonth = String(month).length > 1 ? String(month) : '0' + String(month);
-        let dateNow =  today.getFullYear() + '-' + resultMonth + '-' + today.getDate();
+        // let today = new Date();
+        // let month = today.getMonth() + 1;
+        // let resultMonth = String(month).length > 1 ? String(month) : '0' + String(month);
+        // let dateNow =  today.getFullYear() + '-' + resultMonth + '-' + today.getDate();
+        // console.log(dateNow);
 
         return (
             <div className="container">
@@ -222,12 +241,12 @@ export default class Form extends Component {
                         Enter the date of expiry for the gift cards
                     </label>
                     <input
-                        type="date"
+                        className="datepicker"
+                        id="date"
+                        type="text"
                         name="expiryDate"
-                        value={expiryDate}
-                        min={dateNow}
-                        max="2050-01-01"
-                        onChange={this.handleDate}
+                        defaultValue={expiryDate}
+                        // onChange={this.handleDate}
                     />
                 </div>
                 <div>
