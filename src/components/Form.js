@@ -288,7 +288,7 @@ export default class Form extends Component {
                     <p>You have to pay an overall of <b>{this.state.giftCardsQty * this.state.amount}</b> rupees.</p>
                     <button className="btn btn-secondary" onClick={this.handleConfirm}>Confirm</button>
                     <pre>  OR  </pre>
-                    <button className="btn btn-secondary" onClick={this.hide}>Cancel</button>
+                    <button className="btn btn-secondary" onClick={this.hide}>Edit</button>
                 </Rodal>
                 {loaded ? <Loader loaded={loaded} /> : null}
             </div>
