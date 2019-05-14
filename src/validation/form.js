@@ -18,7 +18,7 @@ export default function validateInput(data) {
 
     // Date checks
     if(Number(data.expiryDate.slice(6)) > (new Date().getFullYear() + 1)) {
-        errors.expiryDateIsInvalid = `You shouldn't enter a date that's greater than a year from ${new Date().getFullYear()} `
+        errors.expiryDateIsInvalid = `You shouldn't enter a date that's greater than a year from ${new Date().getFullYear()}`
     }
 
     // Email checks
