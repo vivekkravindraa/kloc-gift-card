@@ -37,6 +37,7 @@ export default class Form extends Component {
             shop: data.shop,
             customerId: data.customerId
         })
+
         localStorage.setItem('shopDomain', data.shop);
         localStorage.setItem('customerId', data.customerId);
 
@@ -86,20 +87,39 @@ export default class Form extends Component {
     //     }
     // }
 
+    // handlePrefix = (e) => {
+    //     console.log(e.target);
+    //     console.log(e.target.value);
+
+    //     this.setState({ prefix: e.target.value });
+
+    //     let prefixElement = document.getElementById('prefixInput');
+    //     console.log(prefixElement);
+
+    //     prefixElement.addEventListener('change', prefixNow, false);
+
+    //     function prefixNow() {
+    //         let prefixValue = document.getElementById('prefixInput');
+    //         this.setState({ prefix: prefixValue })
+    //     }
+    // }
+
     show = () => {
         const {
             giftCardsQty,
             email,
-            amount
+            amount,
+            prefix
         } = this.state;
 
         const data = {
             giftCardsQty,
             email,
-            amount
+            amount,
+            prefix
         }
 
-        let { errors, isValid } = validateInput(data)
+        let { errors, isValid } = validateInput(data);
 
         if (!isValid) {
             this.setState({
@@ -107,7 +127,7 @@ export default class Form extends Component {
                 visible: false
             })
         } else {
-            console.log(this.state);
+            // console.log(this.state);
             this.setState({ errors: {}, visible: true })
         }
     }
@@ -285,7 +305,7 @@ export default class Form extends Component {
                         max="10000"
                         onChange={this.handleOnChange}
                     />
-                     <span className="red-text">
+                    <span className="red-text">
                         {errors.amount}
                         {errors.amountIsInvalid}
                     </span>
@@ -295,11 +315,20 @@ export default class Form extends Component {
                         Select the prefix with which you want to generate random codes for the gift cards
                     </label>
                     <input
+                        className={classnames("", {
+                            invalid: errors.prefixIsInvalid
+                        })}
+                        id="prefixInput"
                         type="text"
                         name="prefix"
                         value={prefix}
+                        error={errors.prefix}
+                        data-length="10"
                         onChange={this.handleOnChange}
                     />
+                    <span className="red-text">
+                        {errors.prefixIsInvalid}
+                    </span>
                 </div>
                 <button className="btn btn-secondary" onClick={this.show}>Generate</button>
                 <Rodal visible={this.state.visible} onClose={this.hide}>

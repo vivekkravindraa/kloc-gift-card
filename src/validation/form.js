@@ -3,7 +3,7 @@ import isEmpty from 'is-empty';
 
 export default function validateInput(data) {
     let errors = {};
-    
+
     // Convert empty fields to an empty string so we can use validator functions
     data.giftCardsQty = !isEmpty(data.giftCardsQty) ? data.giftCardsQty : "";
     data.email = !isEmpty(data.email) ? data.email : "";
@@ -28,6 +28,11 @@ export default function validateInput(data) {
         errors.amount = "Amount is required";
     } else if (data.amount < 1 || data.amount > 10000) {
         errors.amountIsInvalid = "You should enter a minimum of 1 and a maximum of 10000 rupees";
+    }
+
+    // Prefix checks
+    if (data.prefix.length > 10) {
+        errors.prefixIsInvalid = "Prefix should not be more than 10 characters"
     }
 
     return { errors, isValid: isEmpty(errors) };
