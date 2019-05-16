@@ -39,9 +39,6 @@ export default class Form extends Component {
             customerId: data.customerId
         })
 
-        localStorage.setItem('shopDomain', data.shop);
-        localStorage.setItem('customerId', data.customerId);
-
         let datePicker = document.getElementById('date');
         M.Datepicker.init(datePicker, {
             format: "dd-mm-yyyy",
