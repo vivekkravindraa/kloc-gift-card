@@ -137,7 +137,7 @@ export default class Form extends Component {
                 // console.log(err.response.status);
                 // console.log(err.response.data);
                 // console.log(err.message);
-                if(!err.response) {
+                if (!err.response) {
                     this.setState({
                         visible: false,
                         loaded: false,

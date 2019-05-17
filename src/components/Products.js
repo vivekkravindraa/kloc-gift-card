@@ -20,7 +20,7 @@ export default class Products extends Component {
         //     shop: data.shop,
         //     customerId: data.customerId
         // })
-        // axios.get(`https://402b76da.ngrok.io/.../...?shop={data.shop}`)
+        // axios.get(`https://402b76da.ngrok.io?shop={data.shop}`)
         // .then((response) => { console.log(response.data) })
         // .catch((err) => { console.log(err) })
     }
