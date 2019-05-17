@@ -25,8 +25,8 @@ export default class Display extends Component {
     }
 
     render() {
-        const { giftCardCodes } = this.state;
-        // const giftCardCodes = ["FR6bwx1q", "ByamOdWV", "7roFwfQs", "rmWlwvll", "pgih5eAB"];
+        // const { giftCardCodes } = this.state;
+        const giftCardCodes = ["FR6bwx1q", "ByamOdWV", "7roFwfQs", "rmWlwvll", "pgih5eAB"];
 
         return (
             <div className="container">
@@ -53,7 +53,8 @@ export default class Display extends Component {
                                         "color": "white",
                                         "borderLeft": "20px solid red",
                                         "padding": "10px",
-                                        "marginBottom": "10px"
+                                        "marginBottom": "10px",
+                                        "borderRadius": "4px 4px 4px 4px"
                                     }}
                                 >
                                 {code}
