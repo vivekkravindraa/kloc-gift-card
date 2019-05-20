@@ -25,14 +25,16 @@ export default class Display extends Component {
     }
 
     render() {
-        // const { giftCardCodes } = this.state;
-        const giftCardCodes = ["FR6bwx1q", "ByamOdWV", "7roFwfQs", "rmWlwvll", "pgih5eAB"];
+        const { giftCardCodes } = this.state;
+        // const giftCardCodes = {
+        //     code: ["FR6bwx1q", "ByamOdWV", "7roFwfQs", "rmWlwvll", "pgih5eAB"]
+        // };
 
         return (
             <div className="container">
                 <h1>Generated Gift Card Codes:</h1>
                 {giftCardCodes.length > 0 ?
-                    giftCardCodes.map((code, index) => {
+                    giftCardCodes.map((item, index) => {
                         return (
                             <div key={index}>
                                 <button
@@ -57,7 +59,7 @@ export default class Display extends Component {
                                         "borderRadius": "4px 4px 4px 4px"
                                     }}
                                 >
-                                {code}
+                                {item.code.toUpperCase()}
                                 </div>
                             </div>
                         )
