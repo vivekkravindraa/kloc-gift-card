@@ -1,11 +1,19 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import classnames from 'classnames';
-import Loader from 'react-loader';
 import M from 'materialize-css';
 import queryString from 'query-string';
 import Rodal from 'rodal';
 import validateInput from '../validation/form';
+
+import { css } from '@emotion/core';
+import { PacmanLoader } from 'react-spinners';
+
+const override = css`
+    display: block;
+    margin: 2px auto;
+    border-color: red;
+`;
 
 export default class Form extends Component {
     constructor(props) {
@@ -19,7 +27,7 @@ export default class Form extends Component {
             amount: '',
             prefix: '',
             visible: false,
-            loaded: false,
+            loading: false,
             errors: {},
             error: {
                 statusCode: '',
@@ -118,14 +126,14 @@ export default class Form extends Component {
             body_html: `${shop} ${customerId} ${giftCardsQty} ${expiryDate} ${email} ${amount} ${prefix}`
         }
 
-        this.setState({ loaded: true });
+        this.setState({ loading: true })
 
         axios.post(`https://0c4dd1cd.ngrok.io/products/app/create-product`, giftCardData)
             .then((response) => {
                 setTimeout(() => {
                     this.setState({
                         visible: false,
-                        loaded: false
+                        loading: false
                     }
                 )}, 2000)
                 const variantId = response.data.variants[0].id;
@@ -133,27 +141,31 @@ export default class Form extends Component {
             })
             .catch((err) => {
                 if (!err.response) {
-                    this.setState({
-                        visible: false,
-                        loaded: false,
-                        error: {
-                            ...this.state.error,
-                            statusCode: '',
-                            data: '',
-                            message: `There's a network error!`
-                        }
-                    })
+                    setTimeout(() => {
+                        this.setState({
+                            visible: false,
+                            loading: false,
+                            error: {
+                                ...this.state.error,
+                                statusCode: '',
+                                data: '',
+                                message: `There's a network error!`
+                            }
+                        })
+                    }, 2000)
                 } else {
-                    this.setState({
-                        visible: false,
-                        loaded: false,
-                        error: {
-                            ...this.state.error,
-                            statusCode: err.response.status,
-                            data: err.response.data,
-                            message: ''
-                        }
-                    })
+                    setTimeout(() => {
+                        this.setState({
+                            visible: false,
+                            loading: false,
+                            error: {
+                                ...this.state.error,
+                                statusCode: err.response.status,
+                                data: err.response.data,
+                                message: ''
+                            }
+                        })
+                    }, 2000)
                 }
             })
     }
@@ -175,7 +187,6 @@ export default class Form extends Component {
             email,
             amount,
             prefix,
-            loaded,
             errors,
             error,
         } = this.state;
@@ -305,8 +316,16 @@ export default class Form extends Component {
                     <button className="btn btn-secondary" onClick={this.handleConfirm}>Confirm</button>
                     <pre>  OR  </pre>
                     <button className="btn btn-secondary" onClick={this.hide}>Edit</button>
+                    <div className='sweet-loading'>
+                        <PacmanLoader
+                            css={override}
+                            sizeUnit={"px"}
+                            size={25}
+                            color="teal"
+                            loading={this.state.loading}
+                        />
+                    </div>
                 </Rodal>
-                {loaded ? <Loader loaded={loaded} /> : null}
             </div>
         )
     }

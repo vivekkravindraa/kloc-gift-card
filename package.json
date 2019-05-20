@@ -14,9 +14,9 @@
     "react-copy-to-clipboard": "^5.0.1",
     "react-csv": "^1.1.1",
     "react-dom": "^16.8.6",
-    "react-loader": "^2.4.5",
     "react-router-dom": "^5.0.0",
     "react-scripts": "3.0.1",
+    "react-spinners": "^0.5.4",
     "rodal": "^1.6.3",
     "validator": "^10.11.0"
   },
