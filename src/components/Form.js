@@ -32,7 +32,6 @@ export default class Form extends Component {
     componentDidMount = () => {
         let userData = this.props.location.search;
         let data = queryString.parse(userData);
-        // console.log(data);
 
         this.setState({
             shop: data.shop,
@@ -52,7 +51,6 @@ export default class Form extends Component {
 
         function dateNow() {
             let dateValue = document.getElementById("date").value;
-            // console.log(dateValue);
             alternate.setState({ expiryDate: dateValue })
         }
     }
@@ -86,8 +84,10 @@ export default class Form extends Component {
                 visible: false
             })
         } else {
-            // console.log(this.state);
-            this.setState({ errors: {}, visible: true })
+            this.setState({
+                errors: {},
+                visible: true
+            })
         }
     }
 
@@ -119,24 +119,19 @@ export default class Form extends Component {
         }
 
         this.setState({ loaded: true });
-        // console.log(giftCardData);
 
         axios.post(`https://0c4dd1cd.ngrok.io/products/app/create-product`, giftCardData)
             .then((response) => {
-                // console.log(response.data)
-                this.setState({
-                    visible: false,
-                    loaded: false
-                })
+                setTimeout(() => {
+                    this.setState({
+                        visible: false,
+                        loaded: false
+                    }
+                )}, 2000)
                 const variantId = response.data.variants[0].id;
                 window.location.href = `https://klocapp.myshopify.com/cart/${variantId}:1`;
             })
             .catch((err) => {
-                // console.log(err);
-                // console.log(err.response);
-                // console.log(err.response.status);
-                // console.log(err.response.data);
-                // console.log(err.message);
                 if (!err.response) {
                     this.setState({
                         visible: false,
@@ -189,12 +184,12 @@ export default class Form extends Component {
             <div className="container">
                 {error.data ?
                     <h6 className="card-panel red lighten-2">
-                        NOT FOUND ERROR :: You haven't installed the app! Please install it.
+                       ERROR - NOT FOUND :: You haven't installed the app! Please install it.
                     </h6>
                     : null}
                 {error.message ?
                     <h6 className="card-panel red lighten-2">
-                        NETWORK ERROR :: We're unable to connect to the server right at this moment. Please, try again!
+                        ERROR - SERVER DOWN :: We're unable to connect to the server right at this moment. Please, try again!
                     </h6>
                     : null}
                 <h1>Generate Gift Cards</h1>
