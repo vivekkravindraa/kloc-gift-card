@@ -11,12 +11,6 @@ export default class Csv extends Component {
 
     render() {
 
-        const headers = [
-            { label: "First Name", key: "firstname" },
-            { label: "Last Name", key: "lastname" },
-            { label: "Email", key: "email" }
-        ];
-
         const csvData = [
             ["firstname", "lastname", "email"],
             ["Ahmed", "Tomi", "ah@smthing.co.com"],
@@ -26,7 +20,7 @@ export default class Csv extends Component {
 
         return (
             <div>
-                <CSVLink data={csvData} headers={headers}>Download as CSV</CSVLink>
+                {csvData.length > 0 ? <CSVLink data={csvData}>Download as CSV</CSVLink> : null}
             </div>
         )
     }
