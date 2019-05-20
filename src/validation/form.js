@@ -12,8 +12,8 @@ export default function validateInput(data) {
     // Gift Card Quantity checks
     if(Validator.isEmpty(data.giftCardsQty)) {
         errors.giftCardsQty = "Gift card quantity is required";
-    } else if (data.giftCardsQty < 1 || data.giftCardsQty > 100) {
-        errors.giftCardsQtyIsInvalid = "You should enter a minimum of 1 and a maximum of 100 gift cards";
+    } else if (data.giftCardsQty < 1) {
+        errors.giftCardsQtyIsInvalid = "You should enter a minimum of 1 gift card";
     }
 
     // Date checks
@@ -31,8 +31,8 @@ export default function validateInput(data) {
     // Amount checks
     if (Validator.isEmpty(data.amount)) {
         errors.amount = "Amount is required";
-    } else if (data.amount < 1 || data.amount > 10000) {
-        errors.amountIsInvalid = "You should enter a minimum of 1 and a maximum of 10000 rupees";
+    } else if (data.amount < 1) {
+        errors.amountIsInvalid = "You should enter a minimum of 1 rupee";
     }
 
     // Prefix checks
