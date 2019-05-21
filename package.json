@@ -11,7 +11,6 @@
     "materialize-css": "^1.0.0-rc.2",
     "query-string": "^6.5.0",
     "react": "^16.8.6",
-    "react-copy-to-clipboard": "^5.0.1",
     "react-csv": "^1.1.1",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.0",
