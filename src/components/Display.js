@@ -14,13 +14,13 @@ export default class Display extends Component {
         new Clipboard('.btn');
         let tempToken = queryString.parse(this.props.location.search);
         // console.log(tempToken.temp);
-        if(tempToken.temp) {
+        if (tempToken.temp) {
             axios.get(`https://0c4dd1cd.ngrok.io/orders/gift_cards?tempCode=${tempToken.temp}`)
-            .then((response) => {
-                // console.log(response.data);
-                this.setState({ giftCardCodes: response.data })
-            })
-            .catch((err) => { console.log(err) })
+                .then((response) => {
+                    // console.log(response.data);
+                    this.setState({ giftCardCodes: response.data })
+                })
+                .catch((err) => { console.log(err) })
         }
     }
 
@@ -43,15 +43,15 @@ export default class Display extends Component {
                             <div key={index}>
                                 <button
                                     className="btn"
-                                    data-clipboard-target={"#copy"+index}
+                                    data-clipboard-target={"#copy" + index}
                                     style={{
-                                        "float":"right"
+                                        "float": "right"
                                     }}
                                 >
                                     Copy Code<i className="material-icons right">content_copy</i>
                                 </button>
                                 <div
-                                    id={"copy"+index}
+                                    id={"copy" + index}
                                     style={{
                                         "fontWeight": "bold",
                                         "textAlign": "center",
@@ -63,12 +63,12 @@ export default class Display extends Component {
                                         "borderRadius": "4px 4px 4px 4px"
                                     }}
                                 >
-                                {item.code.toUpperCase()}
+                                    {item.code.toUpperCase()}
                                 </div>
                             </div>
                         )
                     })
-                :   <h6 className="card-panel teal lighten-2">
+                    : <h6 className="card-panel teal lighten-2">
                         ERROR - NOT FOUND :: You haven't genreated any gift card codes!
                     </h6>
                 }
