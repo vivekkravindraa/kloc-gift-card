@@ -26,9 +26,13 @@ export default class Display extends Component {
 
     render() {
         const { giftCardCodes } = this.state;
-        // const giftCardCodes = {
-        //     code: ["FR6bwx1q", "ByamOdWV", "7roFwfQs", "rmWlwvll", "pgih5eAB"]
-        // };
+        // const giftCardCodes = [
+        //     { code: "FR6bwx1q" },
+        //     { code: "ByamOdWV" },
+        //     { code: "7roFwfQs" }, 
+        //     { code: "rmWlwvll" },
+        //     { code: "pgih5eAB" }
+        // ];
 
         return (
             <div className="container">
