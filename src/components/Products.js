@@ -28,8 +28,8 @@ export default class Products extends Component {
         const { shop } = this.state;
 
         return (
-            <div>
-                Welcome to Shop {shop}
+            <div className="container">
+                <h1>Welcome to Shop! {shop}</h1>
             </div>
         )
     }
