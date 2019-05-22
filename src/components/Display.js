@@ -69,7 +69,7 @@ export default class Display extends Component {
                         )
                     })
                     : <h6 className="card-panel teal lighten-2">
-                        ERROR - NOT FOUND :: You haven't genreated any gift card codes!
+                        ERROR - NOT FOUND :: You haven't generated any gift card codes!
                     </h6>
                 }
             </div>
