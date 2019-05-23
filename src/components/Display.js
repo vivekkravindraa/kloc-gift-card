@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import queryString from 'query-string';
-import Clipboard from 'clipboard';
+import React, { Component }     from 'react';
+import axios                    from 'axios';
+import queryString              from 'query-string';
+import Clipboard                from 'clipboard';
+
 export default class Display extends Component {
     constructor(props) {
         super(props);

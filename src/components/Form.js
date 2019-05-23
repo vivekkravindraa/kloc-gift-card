@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import classnames from 'classnames';
-import M from 'materialize-css';
-import queryString from 'query-string';
-import Rodal from 'rodal';
-import validateInput from '../validation/form';
+import React, { Component }     from 'react';
+import axios                    from 'axios';
+import classnames               from 'classnames';
+import M                        from 'materialize-css';
+import queryString              from 'query-string';
+import Rodal                    from 'rodal';
+import validateInput            from '../validation/form';
 
-import { css } from '@emotion/core';
-import { PacmanLoader } from 'react-spinners';
+import { css }                  from '@emotion/core';
+import { PacmanLoader }         from 'react-spinners';
 
 const override = css`
     display: block;
