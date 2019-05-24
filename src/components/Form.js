@@ -1,5 +1,6 @@
 import React, { Component }     from 'react';
 import axios                    from 'axios';
+import baseURI                  from '../baseURI';
 import classnames               from 'classnames';
 import M                        from 'materialize-css';
 import queryString              from 'query-string';
@@ -128,7 +129,7 @@ export default class Form extends Component {
 
         this.setState({ loading: true })
 
-        axios.post(`https://0c4dd1cd.ngrok.io/products/app/create-product`, giftCardData)
+        axios.post(`${baseURI}/products/app/create-product`, giftCardData)
             .then((response) => {
                 setTimeout(() => {
                     this.setState({

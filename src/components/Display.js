@@ -1,5 +1,6 @@
 import React, { Component }     from 'react';
 import axios                    from 'axios';
+import baseURI                  from '../baseURI';
 import queryString              from 'query-string';
 import Clipboard                from 'clipboard';
 
@@ -16,7 +17,7 @@ export default class Display extends Component {
         let tempToken = queryString.parse(this.props.location.search);
         // console.log(tempToken.temp);
         if (tempToken.temp) {
-            axios.get(`https://0c4dd1cd.ngrok.io/orders/gift_cards?tempCode=${tempToken.temp}`)
+            axios.get(`${baseURI}/orders/gift_cards?tempCode=${tempToken.temp}`)
                 .then((response) => {
                     // console.log(response.data);
                     this.setState({ giftCardCodes: response.data })
