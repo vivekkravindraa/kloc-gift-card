@@ -1,6 +1,6 @@
 import React, { Component }     from 'react';
 import axios                    from 'axios';
-import baseURI                  from '../baseURI';
+import { baseURI }              from '../baseURI';
 import queryString              from 'query-string';
 import Clipboard                from 'clipboard';
 
@@ -35,7 +35,6 @@ export default class Display extends Component {
         //     { code: "rmWlwvll" },
         //     { code: "pgih5eAB" }
         // ];
-
         return (
             <div className="container">
                 <h1>Generated Gift Card Codes:</h1>

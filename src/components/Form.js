@@ -1,6 +1,6 @@
 import React, { Component }     from 'react';
 import axios                    from 'axios';
-import baseURI                  from '../baseURI';
+import { baseURI }              from '../baseURI';
 import classnames               from 'classnames';
 import M                        from 'materialize-css';
 import queryString              from 'query-string';
