@@ -1,6 +1,6 @@
 import React, { Component }     from 'react';
 import axios                    from 'axios';
-import { baseURI }              from '../baseURI';
+import { baseURL }              from '../baseURL';
 import classnames               from 'classnames';
 import M                        from 'materialize-css';
 import queryString              from 'query-string';
@@ -129,7 +129,7 @@ export default class Form extends Component {
 
         this.setState({ loading: true })
 
-        axios.post(`${baseURI}/products/app/create-product`, giftCardData)
+        axios.post(`${baseURL}/products/app/create-product`, giftCardData)
             .then((response) => {
                 setTimeout(() => {
                     this.setState({
