@@ -1,6 +1,7 @@
 import React, { Component }     from 'react';
 import axios                    from 'axios';
 import { baseURL }              from '../baseURL';
+import { CSVLink }              from 'react-csv';
 import queryString              from 'query-string';
 import Clipboard                from 'clipboard';
 
@@ -15,11 +16,9 @@ export default class Display extends Component {
     componentDidMount = () => {
         new Clipboard('.btn');
         let tempToken = queryString.parse(this.props.location.search);
-        // console.log(tempToken.temp);
         if (tempToken.temp) {
             axios.get(`${baseURL}/orders/gift_cards?tempCode=${tempToken.temp}`)
                 .then((response) => {
-                    // console.log(response.data);
                     this.setState({ giftCardCodes: response.data })
                 })
                 .catch((err) => { console.log(err) })
@@ -38,6 +37,13 @@ export default class Display extends Component {
         return (
             <div className="container">
                 <h1>Generated Gift Card Codes:</h1>
+                {giftCardCodes.length > 0 ?
+                    <CSVLink
+                        data={giftCardCodes}
+                    >
+                        Download as CSV
+                    </CSVLink>
+                    : null}
                 {giftCardCodes.length > 0 ?
                     giftCardCodes.map((item, index) => {
                         return (
