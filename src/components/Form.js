@@ -189,14 +189,14 @@ export default class Form extends Component {
             amount,
             prefix,
             errors,
-            error,
+            error
         } = this.state;
 
         return (
             <div className="container">
                 {error.data ?
                     <h6 className="card-panel red lighten-2">
-                       ERROR - NOT FOUND :: You haven't installed the app! Please install it.
+                        ERROR - NOT FOUND :: You haven't installed the app! Please install it.
                     </h6>
                     : null}
                 {error.message ?
