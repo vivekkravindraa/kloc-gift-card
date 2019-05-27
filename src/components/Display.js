@@ -29,11 +29,11 @@ export default class Display extends Component {
     render() {
         const { giftCardCodes } = this.state;
         // const giftCardCodes = [
-        //     { code: "FR6bwx1q" },
-        //     { code: "ByamOdWV" },
-        //     { code: "7roFwfQs" }, 
-        //     { code: "rmWlwvll" },
-        //     { code: "pgih5eAB" }
+        //     { code: "kloc-FR6bwx1qFR6bwx1q" },
+        //     { code: "kloc-ByamOdWVByamOdWV" },
+        //     { code: "kloc-7roFwfQs7roFwfQs" }, 
+        //     { code: "kloc-rmWlwvllrmWlwvll" },
+        //     { code: "kloc-pgih5eABpgih5eAB" }
         // ];
         return (
             <div className="container">
