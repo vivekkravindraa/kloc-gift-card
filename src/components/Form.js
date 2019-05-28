@@ -254,7 +254,6 @@ export default class Form extends Component {
                         name="email"
                         value={email}
                         error={errors.email}
-                        pattern="[^ @]*@[^ @]*"
                         onChange={this.handleOnChange}
                     />
                     <span className="red-text">
