@@ -138,7 +138,7 @@ export default class Form extends Component {
                     }
                 )}, 2000)
                 const variantId = response.data.variants[0].id;
-                window.location.href = `https://klocapp.myshopify.com/cart/${variantId}:1`;
+                window.location.href = `https://${response.data.shop}/cart/${variantId}:1`;
             })
             .catch((err) => {
                 if (!err.response) {
