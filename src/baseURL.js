@@ -1,3 +1,3 @@
-const baseURL = 'https://daf96848.ngrok.io';
+const baseURL = 'https://ede544d6.ngrok.io';
 
 module.exports = { baseURL }
